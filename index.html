@@ -76,6 +76,8 @@ section{padding:84px 0}
 .card svg{width:40px;height:40px;color:var(--navy);margin-bottom:14px}
 .card h3{font-size:1.5rem;color:var(--navy);margin-bottom:8px}
 .card p{color:var(--mute);font-size:.95rem}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:24px}.gal figure{margin:0}.gal button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:10px;overflow:hidden;border-top:4px solid var(--gold)}.gal img{display:block;width:100%;height:auto;transition:transform .3s}.gal button:hover img{transform:scale(1.03)}.gal figcaption{font-weight:600;color:var(--navy);margin-top:10px}dialog#lb{border:0;padding:0;background:transparent;max-width:94vw;max-height:94vh;overflow:visible}dialog#lb::backdrop{background:#000d}#lb img{max-width:94vw;max-height:90vh;border-radius:8px;display:block}#lbx{position:absolute;top:-14px;right:-10px;width:40px;height:40px;border-radius:50%;border:0;background:var(--gold);color:#fff;font-size:1.6rem;cursor:pointer}
+@media(max-width:600px){.gal{grid-template-columns:1fr}}
 .why{background:var(--navy);color:#fff}
 .why .head h2{color:#fff}.why .head p{color:#b9c6da}
 .why .grid3 .item{padding:6px 0 6px 18px;border-left:3px solid var(--gold)}
@@ -116,7 +118,7 @@ section{padding:60px 0}}
 <a class="logo" href="#top"><span class="mark">SK</span><span>Vice Trucking<small>Freight Hauling</small></span></a>
 <button class="menu" aria-label="Menu" onclick="document.getElementById('links').classList.toggle('open')">&#9776;</button>
 <nav><ul id="links" onclick="this.classList.remove('open')">
-<li><a href="#services">Services</a></li><li><a href="#why">Why Us</a></li><li><a href="#process">How It Works</a></li><li><a href="#contact">Contact</a></li>
+<li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#why">Why Us</a></li><li><a href="#process">How It Works</a></li><li><a href="#contact">Contact</a></li>
 <li><a class="btn btn-gold" href="#quote">Get a Quote</a></li></ul></nav>
 </div></header>
 
@@ -157,6 +159,14 @@ section{padding:60px 0}}
 <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>Load Tracking</h3><p>Check calls and status updates so you always know where your freight is.</p></div>
 </div></div></section>
 
+<section class="gallery" id="gallery"><div class="wrap">
+<div class="head"><h2>Our fleet on the road</h2><p>Well-maintained equipment, ready for your freight.</p></div>
+<div class="gal">
+<figure><button type="button" data-full="gallery-fleet.jpg" aria-label="Enlarge photo: SK Vice Trucking tractor and trailer"><img src="gallery-fleet.jpg" width="1200" height="688" loading="lazy" alt="SK Vice Trucking red tractor with white trailer"></button><figcaption>Ready to roll</figcaption></figure>
+<figure><button type="button" data-full="gallery-weigh-station.jpg" aria-label="Enlarge photo: SK Vice Trucking at the weigh station"><img src="gallery-weigh-station.jpg" width="1200" height="688" loading="lazy" alt="SK Vice Trucking truck on the scale at a weigh station"></button><figcaption>On the scale at the weigh station</figcaption></figure>
+</div></div></section>
+<dialog id="lb"><button type="button" id="lbx" aria-label="Close">&times;</button><img id="lbi" alt=""></dialog>
+
 <section class="why" id="why"><div class="wrap">
 <div class="head"><h2>Why shippers choose SK Vice</h2><p>We take the same approach the industry leaders do: deliver reliably, communicate clearly, and put safety first.</p></div>
 <div class="grid3">
@@ -195,6 +205,7 @@ function sendQuote(e){e.preventDefault();var g=function(i){return document.getEl
 mail("Quote request: "+g("o")+" to "+g("d"),"Pickup: "+g("o")+"\nDelivery: "+g("d")+"\nEquipment: "+g("e")+"\nPickup date: "+g("w")+"\nEmail: "+g("em")+"\nPhone: "+g("ph"));return false}
 function sendMsg(e){e.preventDefault();var g=function(i){return document.getElementById(i).value};
 mail("Website inquiry from "+g("n"),g("m")+"\n\nEmail: "+g("c")+"\nPhone: "+g("cp"));return false}
+document.querySelectorAll(".gal button").forEach(function(b){b.onclick=function(){var d=document.getElementById("lb");document.getElementById("lbi").src=b.dataset.full;document.getElementById("lbi").alt=b.querySelector("img").alt;d.showModal()}});document.getElementById("lbx").onclick=function(){document.getElementById("lb").close()};document.getElementById("lb").onclick=function(e){if(e.target===this)this.close()};
 </script>
 </body>
 </html>
