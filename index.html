@@ -131,7 +131,7 @@ section{padding:60px 0}}
 <h2>Get a Fast Quote</h2><p>Tell us about your load. We reply the same business day.</p>
 <div class="row"><div><label for="o">Pickup (City, ST)</label><input id="o" required></div><div><label for="d">Delivery (City, ST)</label><input id="d" required></div></div>
 <div class="row"><div><label for="e">Equipment</label><select id="e"><option>Dry Van</option><option>Flatbed</option><option>Reefer</option><option>Other / Not sure</option></select></div><div><label for="w">Pickup Date</label><input id="w" type="date"></div></div>
-<label for="em">Email or Phone</label><input id="em" required>
+<div class="row"><div><label for="em">Email</label><input id="em" type="email" autocomplete="email" required></div><div><label for="ph">Phone</label><input id="ph" type="tel" autocomplete="tel" required></div></div>
 <button class="btn btn-gold" type="submit">Request Quote</button>
 </form>
 </div><div class="road"></div></div>
@@ -179,7 +179,7 @@ section{padding:60px 0}}
 <section class="contact" id="contact"><div class="wrap">
 <div><div class="head" style="margin-bottom:0"><h2>Contact us</h2><p>Shippers, brokers and drivers &mdash; reach out and we'll respond promptly.</p></div>
 <ul><li><strong>Phone</strong><a href="tel:+18662933250">866-293-3250</a></li><li><strong>Email</strong><a href="mailto:info@skvicetrucking.com">info@SKViceTrucking.com</a></li><li><strong>Established</strong>Proudly hauling freight since 2019</li></ul></div>
-<form onsubmit="return sendMsg(event)"><label for="n">Name</label><input id="n" required><label for="c">Email or Phone</label><input id="c" required><label for="m">Message</label><textarea id="m" rows="4" required></textarea><button class="btn btn-gold" style="margin-top:16px" type="submit">Send Message</button></form>
+<form onsubmit="return sendMsg(event)"><label for="n">Name</label><input id="n" required><label for="c">Email</label><input id="c" type="email" autocomplete="email" required><label for="cp">Phone</label><input id="cp" type="tel" autocomplete="tel" required><label for="m">Message</label><textarea id="m" rows="4" required></textarea><button class="btn btn-gold" style="margin-top:16px" type="submit">Send Message</button></form>
 </div></section>
 </main>
 
@@ -189,9 +189,9 @@ section{padding:60px 0}}
 var TO="info@skvicetrucking.com";
 function mail(s,b){location.href="mailto:"+TO+"?subject="+encodeURIComponent(s)+"&body="+encodeURIComponent(b)}
 function sendQuote(e){e.preventDefault();var g=function(i){return document.getElementById(i).value};
-mail("Quote request: "+g("o")+" to "+g("d"),"Pickup: "+g("o")+"\nDelivery: "+g("d")+"\nEquipment: "+g("e")+"\nPickup date: "+g("w")+"\nContact: "+g("em"));return false}
+mail("Quote request: "+g("o")+" to "+g("d"),"Pickup: "+g("o")+"\nDelivery: "+g("d")+"\nEquipment: "+g("e")+"\nPickup date: "+g("w")+"\nEmail: "+g("em")+"\nPhone: "+g("ph"));return false}
 function sendMsg(e){e.preventDefault();var g=function(i){return document.getElementById(i).value};
-mail("Website inquiry from "+g("n"),g("m")+"\n\nContact: "+g("c"));return false}
+mail("Website inquiry from "+g("n"),g("m")+"\n\nEmail: "+g("c")+"\nPhone: "+g("cp"));return false}
 </script>
 </body>
 </html>
